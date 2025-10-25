@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Keerana Store</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Welcome to Keerana Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#login-section">Login</a></li>
+                <li><a href="#admin-section">Admin Panel</a></li>
+                <li><a href="#customer-section">Customer Panel</a></li>
+                <li><a href="#billing-section">Billing</a></li>
+                <li><a href="#history-section">Customer History</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Login Section -->
+        <section id="login-section">
+            <h2>Login</h2>
+            <div>
+                <h3>Admin Login</h3>
+                <form id="admin-login-form">
+                    <label for="admin-username">Username:</label>
+                    <input type="text" id="admin-username" name="admin-username" required />
+                    <br />
+                    <label for="admin-password">Password:</label>
+                    <input type="password" id="admin-password" name="admin-password" required />
+                    <br />
+                    <button type="submit">Admin Login</button>
+                </form>
+            </div>
+            <div>
+                <h3>Customer Login</h3>
+                <form id="customer-login-form">
+                    <label for="customer-name">Name:</label>
+                    <input type="text" id="customer-name" name="customer-name" required />
+                    <br />
+                    <button type="submit">Customer Login</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin-section" style="display:none;">
+            <h2>Admin Panel</h2>
+
+            <!-- Add new item -->
+            <div id="add-item-section">
+                <h3>Add New Item</h3>
+                <form id="add-item-form" enctype="multipart/form-data">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" name="item-name" required />
+                    <br />
+                    <label for="item-price-kg">Price per Kg (in ₹):</label>
+                    <input type="number" step="0.01" id="item-price-kg" name="item-price-kg" min="0" />
+                    <br />
+                    <label for="item-price-manual">Or Manual Price (in ₹):</label>
+                    <input type="number" step="0.01" id="item-price-manual" name="item-price-manual" min="0" />
+                    <br />
+                    <label for="item-image">Item Image:</label>
+                    <input type="file" id="item-image" name="item-image" accept="image/*" />
+                    <br />
+                    <button type="submit">Add Item</button>
+                </form>
+            </div>
+
+            <!-- Edit item price -->
+            <div id="edit-item-section">
+                <h3>Edit Item Price</h3>
+                <form id="edit-item-form">
+                    <label for="select-item-edit">Select Item:</label>
+                    <select id="select-item-edit" name="select-item-edit">
+                        <option value="" disabled selected>Select an item</option>
+                        <!-- Items will be populated here dynamically -->
+                    </select>
+                    <br />
+                    <label for="new-price-kg">New Price per Kg (in ₹):</label>
+                    <input type="number" step="0.01" id="new-price-kg" name="new-price-kg" min="0" />
+                    <br />
+                    <label for="new-price-manual">Or Manual Price (in ₹):</label>
+                    <input type="number" step="0.01" id="new-price-manual" name="new-price-manual" min="0" />
+                    <br />
+                    <button type="submit">Update Price</button>
+                </form>
+            </div>
+
+            <!-- Admin Bill Section -->
+            <div id="admin-bill-section">
+                <h3>Admin Billing</h3>
+                <form id="admin-bill-form">
+                    <label for="admin-customer-name">Customer Name:</label>
+                    <input type="text" id="admin-customer-name" name="admin-customer-name" required />
+                    <br />
+                    <div id="admin-items-list">
+                        <h4>Select Items:</h4>
+                        <!-- Item checkboxes and quantity inputs will be inserted here -->
+                    </div>
+                    <label for="admin-discount">Discount (in ₹):</label>
+                    <input type="number" step="0.01" id="admin-discount" name="admin-discount" min="0" value="0" />
+                    <br />
+                    <button type="submit">Generate Bill</button>
+                </form>
+                <div id="admin-bill-output">
+                    <!-- Bill details will be shown here -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Customer Panel -->
+        <section id="customer-section" style="display:none;">
+            <h2>Customer Panel</h2>
+            <form id="customer-bill-form">
+                <div>
+                    <h3>Select Items</h3>
+                    <div id="customer-items-list">
+                        <!-- Item checkboxes and quantity inputs will be inserted here -->
+                    </div>
+                </div>
+                <button type="submit">Check Bill</button>
+            </form>
+            <div id="customer-bill-output">
+                <!-- Bill details will be shown here -->
+            </div>
+        </section>
+
+        <!-- Billing Section for Customer Bill History -->
+        <section id="billing-section" style="display:none;">
+            <h2>Billing</h2>
+            <p>Use Admin Billing or Customer Billing above.</p>
+        </section>
+
+        <!-- Customer History Section -->
+        <section id="history-section" style="display:none;">
+            <h2>Customer History</h2>
+            <form id="customer-history-form">
+                <label for="search-customer-name">Enter Customer Name:</label>
+                <input type="text" id="search-customer-name" name="search-customer-name" required />
+                <button type="submit">Search History</button>
+            </form>
+            <div id="history-results">
+                <!-- Customer purchase histories will be shown here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Keerana Store. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+  </html>
